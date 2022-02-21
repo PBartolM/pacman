@@ -11,6 +11,7 @@ class GameController(object):
         pygame.init()
         self.screen = pygame.display.set_mode(SCREENSIZE, 0, 32)
         self.background = None
+        self.clock = pygame.time.Clock()
 
     def setBackground(self):
         self.background = pygame.image.load('maze.png')
