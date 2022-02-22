@@ -14,11 +14,12 @@ class Ghost(object):
         p = self.position.asInt()
         pygame.draw.circle(screen, self.color, p, self.radius)
 
-    def muerte(self, screen):
-        p = self.position.asInt()
-        pygame.draw.circle(screen, self.color, p, 0)
-
-    def miedo(self, screen):
-        if self.color == BLUE:
-            p = self.position.asInt()
-            pygame.draw.circle(screen, self.color, p, 0)
+    # obsoleto , lo dejo pero ya no vale
+    # def muerte(self, screen):
+    #     p = self.position.asInt()
+    #     pygame.draw.circle(screen, self.color, p, 0)
+    # obsoleto , lo dejo pero ya no vale
+    # def miedo(self, screen):
+    #     if self.color == BLUE:
+    #         p = self.position.asInt()
+    #         pygame.draw.circle(screen, self.color, p, 0)

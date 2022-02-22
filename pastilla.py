@@ -16,12 +16,12 @@ class Pastilla(object):
         if self.visible:
             p = self.position.asInt()
             pygame.draw.circle(screen, self.color, p, self.radius)
-
-    def desaparece(self, screen):
-        if self.visible:
-            self.visible=False
-            p = self.position.asInt()
-            pygame.draw.circle(screen, self.color, p, 0)
+    #obsoleto, lo dejo pero no se usa
+    # def desaparece(self, screen):
+    #     if self.visible:
+    #         self.visible=False
+    #         p = self.position.asInt()
+    #         pygame.draw.circle(screen, self.color, p, 0)
 
 
 class PastillaGrande(Pastilla):

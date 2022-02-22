@@ -37,20 +37,21 @@ class GameController(object):
                 exit()
 
     def colisiones(self):
-        pallet = self.pacman.comer(self.pastilla)
-        if pallet:
-            self.pastilla.desaparece(self.screen)
+        pasti = self.pacman.comer(self.pastilla)
+        if pasti:
+            #self.pastilla.desaparece(self.screen)
+            self.pastilla.radius=0
 
-        powerpallet = self.pacman.comer(self.pastillaGrande)
-        if powerpallet:
-            self.pastillaGrande.desaparece(self.screen)
+        megapasti = self.pacman.comer(self.pastillaGrande)
+        if megapasti:
+            #self.pastillaGrande.desaparece(self.screen)
+            self.pastillaGrande.radius=0
             self.ghost.color = BLUE
 
         comefantasma= self.pacman.colisionFantasma(self.ghost)
         if comefantasma:
             if self.ghost.color == BLUE:
                 self.ghost.radius=0
-
             else:
                 self.pacman.radius=0
 

@@ -47,10 +47,10 @@ class Pacman(object):
         if dSquared <= rSquared:
             return ghost
         return None
-
-    def muerte(self, screen):
-        p = self.position.asInt()
-        pygame.draw.circle(screen, self.color, p, 0)
+    # obsoleto , lo dejo pero ya no vale
+    # def muerte(self, screen):
+    #     p = self.position.asInt()
+    #     pygame.draw.circle(screen, self.color, p, 0)
 
     def render(self, screen):
         p = self.position.asInt()
