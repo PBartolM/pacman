@@ -1,0 +1,20 @@
+#!/bin/bash
+
+function test () {
+	string=`find -E Downloads -regex ".*app-santanderUsa-qa-.*\.aab"` &&
+ 	APP_FILE_NAME=${string%????} &&
+	AAB=${APP_FILE_NAME}.aab &&
+	APKS=${APP_FILE_NAME}.apks &&
+	RESOURCE_ONB="/Users/X982909/Archivos/Repos/mb-tae-mobile-onboarding/src/test/resources"
+	rm $APKS ;
+  adb uninstall com.santanderbank.digital.qa ;
+	bundletool build-apks --bundle=$AAB --output=$APKS --mode=universal &&
+  rm $RESOURCE_ONB/universalQA.apk ;
+  unzip -o $APKS -x toc.pb -d $RESOURCE_ONB &&
+	mv $RESOURCE_ONB/universal.apk $RESOURCE_ONB/universalQA.apk &&
+  rm $AAB $APKS ;
+	$JAVA_HOME/bin/java -Xmx1024M -Xss1m -jar $ANDROID_HOME/build-tools/33.0.2/lib/apksigner.jar verify --print-certs $RESOURCE_ONB/universalQA.apk ;
+	$JAVA_HOME/bin/java -Xmx1024M -Xss1m -jar $ANDROID_HOME/build-tools/33.0.2/lib/apksigner.jar sign --key '/Applications/Appium Server GUI.app/Contents/Resources/app/node_modules/appium/node_modules/appium-adb/keys/testkey.pk8' --cert '/Applications/Appium Server GUI.app/Contents/Resources/app/node_modules/appium/node_modules/appium-adb/keys/testkey.x509.pem' $RESOURCE_ONB/universalQA.apk ;
+	adb install $RESOURCE_ONB/universalQA.apk
+}
+test
